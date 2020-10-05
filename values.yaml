@@ -1,0 +1,62 @@
+# cert-manager-webhook-dnspod/values.yaml at master · qqshfox/cert-manager-webhook-dnspod
+# https://github.com/qqshfox/cert-manager-webhook-dnspod/blob/master/deploy/cert-manager-webhook-dnspod/values.yaml
+
+# The GroupName here is used to identify your company or business unit that
+# created this webhook.
+# For example, this may be "acme.mycompany.com".
+# This name will need to be referenced in each Issuer's `webhook` stanza to
+# inform cert-manager of where to send ChallengePayload resources in order to
+# solve the DNS01 challenge.
+# This group name should be **unique**, hence using your own company's domain
+# here is recommended.
+groupName: <Your Company>
+
+secrets:
+  # 密钥管理 - DNSPod 官方帮助中心-技术支持-DNSPod-免费智能DNS解析服务商-电信_网通_教育网,智能DNS
+  # https://support.dnspod.cn/account/5f2d466de8320f1a740d9ff3/
+  apiID: <Your DNSPod API ID>
+  apiToken:  <Your DNSPod API Token>
+
+clusterIssuer:
+  enabled: true
+  # staging: false
+  email: <Your email>
+
+  # https://cert-manager.io/docs/configuration/acme/#adding-multiple-solver-types
+  selector:
+    dnsZones:
+      - <Your domain>
+
+image:
+#   repository: qqshfox/cert-manager-webhook-dnspod
+# Or
+#   repository: cloudolife/cert-manager-webhook-dnspod
+# Or
+  repository: <Your Repository>/cert-manager-webhook-dnspod
+  tag: latest
+  pullPolicy: IfNotPresent
+
+# nameOverride: ""
+# fullnameOverride: ""
+
+# service:
+#   type: ClusterIP
+#   port: 443
+
+# resources: {}
+#   # We usually recommend not to specify default resources and to leave this as a conscious
+#   # choice for the user. This also increases chances charts run on environments with little
+#   # resources, such as Minikube. If you do want to specify resources, uncomment the following
+#   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+#   # limits:
+#   #  cpu: 100m
+#   #  memory: 128Mi
+#   # requests:
+#   #  cpu: 100m
+#   #  memory: 128Mi
+
+# nodeSelector: {}
+
+# tolerations: []
+
+# affinity: {}
