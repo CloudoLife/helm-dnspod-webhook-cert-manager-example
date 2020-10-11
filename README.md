@@ -6,6 +6,8 @@ Along with Nginx Ingress, you can configure HTTPS access to the website. With Le
 
 You can modify it and use dnspod-webhook-cert-manager. There is example about installing it with Helm in the article.
 
+<!-- more -->
+
 ## Prerequisites
 
 - [Kubernetes(K8S)](https://kubernetes.io/)
@@ -114,14 +116,15 @@ See Helm release about cert-manager-webhook-dnspod.
 ```shell
 $ helm list -n cert-manager
 NAME                       	NAMESPACE   	REVISION	UPDATED                               	STATUS  	CHART                            	APP VERSION
-cert-manager-webhook-dnspod	cert-manager	1       	2020-09-25 12:57:30.168666 +0800 +0800	deployed	webhook-dnspod-0.1.0             	1.0
+cert-manager-webhook-dnspod	cert-manager	1       	2020-09-25 12:54:53.866675 +0800 +0800	deployed	cert-manager-webhook-dnspod-0.3.1	0.2.0
 ```
 
 See pods about cert-manager-webhook-dnspod.
 
 ```shell
 $ kubectl get pods -n cert-manager
-...
+NAME                                           READY   STATUS    RESTARTS   AGE
+cert-manager-webhook-dnspod-84b9b7b886-q9dbj   1/1     Running   3          13d
 ```
 
 ## References

@@ -1,3 +1,0 @@
-[submodule "cert-manager-webhook-dnspod"]
-	path = cert-manager-webhook-dnspod
-	url = https://github.com/qqshfox/cert-manager-webhook-dnspod
